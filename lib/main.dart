@@ -1,6 +1,6 @@
-// Flutter is Widget over Widget over Widget 
+// Flutter is Widget over Widget over Widget
 // And every Widget has arguments inside it
-// When we use an argument we needt to add another widget inside it 
+// When we use an argument we needt to add another widget inside it
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +16,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('App Title'),
+          title: Text('App Title'), 
+        ),
+        body: Text('data'),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              label: 'Home',
+              icon: Icon(Icons.home)),
+              BottomNavigationBarItem(
+                label: 'Settings',
+                icon: Icon(Icons.settings))
+          ],
         ),
       ),
     );
