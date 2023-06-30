@@ -7,6 +7,10 @@
 // Use const to remove blue's for stuffs that will be constant
 // Stateful Widget says that the state is going to change
 // setState is used to inform what the change is going to be!
+// To make the navigation buttons functional we created a variable buttonIndex
+// CurrentIndex is used to change the selected navigation item
+// There we used onTap function to actually change the button. 
+// The onTap function returns the index of the item clicked 
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,7 +26,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String buttonName = 'Click Me!';
-
+  int buttonIndex = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,6 +58,14 @@ class _MyAppState extends State<MyApp> {
               icon: Icon(Icons.settings),
             )
           ],
+          currentIndex: buttonIndex,
+          onTap: (value) {
+            setState(
+              () {
+                buttonIndex = value;
+              },
+            );
+          },
         ),
       ),
     );
