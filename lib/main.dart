@@ -5,14 +5,23 @@
 // use ctrl>shift>I for fomatting
 // Refractor(ctrl>shift>R) is used to wrap with a widget or remove a widget
 // Use const to remove blue's for stuffs that will be constant
+// Stateful Widget says that the state is going to change
+// setState is used to inform what the change is going to be!
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String buttonName = 'Click Me!';
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +34,13 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: ElevatedButton(
             onPressed: () {
-              print('print something');
+              setState(
+                () {
+                  buttonName = 'Clicked';
+                },
+              );
             },
-            child: const Text('Click'),
+            child: Text(buttonName),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
