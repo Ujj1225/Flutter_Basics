@@ -9,8 +9,10 @@
 // setState is used to inform what the change is going to be!
 // To make the navigation buttons functional we created a variable buttonIndex
 // CurrentIndex is used to change the selected navigation item
-// There we used onTap function to actually change the button. 
-// The onTap function returns the index of the item clicked 
+// There we used onTap function to actually change the button.
+// The onTap function returns the index of the item clicked
+// Child only takes one thing so cant add more sorry!
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,15 +38,31 @@ class _MyAppState extends State<MyApp> {
           title: const Text('App Title'),
         ),
         body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              setState(
-                () {
-                  buttonName = 'Clicked';
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  setState(
+                    () {
+                      buttonName = 'Clicked';
+                    },
+                  );
                 },
-              );
-            },
-            child: Text(buttonName),
+                child: Text(buttonName),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(
+                    () {
+                      buttonName = 'Clicked';
+                    },
+                  );
+                },
+                child: Text(buttonName),
+              )
+            ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
