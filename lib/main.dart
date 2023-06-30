@@ -38,31 +38,35 @@ class _MyAppState extends State<MyApp> {
           title: const Text('App Title'),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  setState(
-                    () {
-                      buttonName = 'Clicked';
-                    },
-                  );
-                },
-                child: Text(buttonName),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(
-                    () {
-                      buttonName = 'Clicked';
-                    },
-                  );
-                },
-                child: Text(buttonName),
-              )
-            ],
+          child: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(
+                      () {
+                        buttonName = 'Clicked';
+                      },
+                    );
+                  },
+                  child: Text(buttonName),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(
+                      () {
+                        buttonName = 'Clicked';
+                      },
+                    );
+                  },
+                  child: Text(buttonName),
+                )
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
