@@ -1,6 +1,10 @@
 // Flutter is Widget over Widget over Widget
 // And every Widget has arguments inside it
 // When we use an argument we needt to add another widget inside it
+// Put commas after all brackets
+// use ctrl>shift>I for fomatting
+// Refractor(ctrl>shift>R) is used to wrap with a widget or remove a widget
+// Use const to remove blue's for stuffs that will be constant
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,17 +20,26 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('App Title'), 
+          title: const Text('App Title'),
         ),
-        body: Text('data'),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () {
+              print('print something');
+            },
+            child: const Text('Click'),
+          ),
+        ),
         bottomNavigationBar: BottomNavigationBar(
-          items: [
+          items: const [
             BottomNavigationBarItem(
               label: 'Home',
-              icon: Icon(Icons.home)),
-              BottomNavigationBarItem(
-                label: 'Settings',
-                icon: Icon(Icons.settings))
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              label: 'Settings',
+              icon: Icon(Icons.settings),
+            )
           ],
         ),
       ),
