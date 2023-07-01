@@ -18,6 +18,7 @@
 // Primary and onPrimary and deprecated and now backgroundColor and foregroundColor are used in place of 'em
 // Using Conditions
 // Image network is used to add image from internet directly through the URL
+// Next is image asset and widget catalog before i depart to campus
 
 import 'package:flutter/material.dart';
 
@@ -80,8 +81,7 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                 )
-              : Image.network(
-                  'https://thumbs.dreamstime.com/b/aurora-borealis-northern-lights-above-snowy-mountain-skagsanden-beach-lofoten-islands-norway-171472776.jpg'),
+              : Image.asset('images/bg.jpg')
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
