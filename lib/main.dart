@@ -17,6 +17,7 @@
 // Primary is the color of the button and onPrimary is the color of text inside the button
 // Primary and onPrimary and deprecated and now backgroundColor and foregroundColor are used in place of 'em
 // Using Conditions
+// Image network is used to add image from internet directly through the URL
 
 import 'package:flutter/material.dart';
 
@@ -43,41 +44,44 @@ class _MyAppState extends State<MyApp> {
           title: const Text('App Title'),
         ),
         body: Center(
-          child: buttonIndex ==0? Container(
-            width: double.infinity,
-            height: double.infinity,
-            color: const Color.fromARGB(255, 165, 176, 182),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    foregroundColor: Colors.white,
+          child: buttonIndex == 0
+              ? Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: const Color.fromARGB(255, 165, 176, 182),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                        ),
+                        onPressed: () {
+                          setState(
+                            () {
+                              buttonName = 'Clicked';
+                            },
+                          );
+                        },
+                        child: Text(buttonName),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(
+                            () {
+                              buttonName = 'Clicked';
+                            },
+                          );
+                        },
+                        child: Text(buttonName),
+                      )
+                    ],
                   ),
-                  onPressed: () {
-                    setState(
-                      () {
-                        buttonName = 'Clicked';
-                      },
-                    );
-                  },
-                  child: Text(buttonName),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(
-                      () {
-                        buttonName = 'Clicked';
-                      },
-                    );
-                  },
-                  child: Text(buttonName),
                 )
-              ],
-            ),
-          ) : const SizedBox(),
+              : Image.network(
+                  'https://thumbs.dreamstime.com/b/aurora-borealis-northern-lights-above-snowy-mountain-skagsanden-beach-lofoten-islands-norway-171472776.jpg'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
