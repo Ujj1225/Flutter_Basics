@@ -16,6 +16,7 @@
 // For Styling you need to remember that style: Widget_name.stylefrom()
 // Primary is the color of the button and onPrimary is the color of text inside the button
 // Primary and onPrimary and deprecated and now backgroundColor and foregroundColor are used in place of 'em
+// Using Conditions
 
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('App Title'),
         ),
         body: Center(
-          child: Container(
+          child: buttonIndex ==0? Container(
             width: double.infinity,
             height: double.infinity,
             color: const Color.fromARGB(255, 165, 176, 182),
@@ -76,7 +77,7 @@ class _MyAppState extends State<MyApp> {
                 )
               ],
             ),
-          ),
+          ) : const SizedBox(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
