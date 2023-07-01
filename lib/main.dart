@@ -12,6 +12,10 @@
 // There we used onTap function to actually change the button.
 // The onTap function returns the index of the item clicked
 // Child only takes one thing so cant add more sorry!
+// Main and cross axis for row and coloumns are different so pay attention
+// For Styling you need to remember that style: Widget_name.stylefrom()
+// Primary is the color of the button and onPrimary is the color of text inside the button
+// Primary and onPrimary and deprecated and now backgroundColor and foregroundColor are used in place of 'em
 
 import 'package:flutter/material.dart';
 
@@ -38,14 +42,19 @@ class _MyAppState extends State<MyApp> {
           title: const Text('App Title'),
         ),
         body: Center(
-          child: SizedBox(
+          child: Container(
             width: double.infinity,
             height: double.infinity,
+            color: const Color.fromARGB(255, 165, 176, 182),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    foregroundColor: Colors.white,
+                  ),
                   onPressed: () {
                     setState(
                       () {
