@@ -60,11 +60,7 @@ class _MyAppState extends State<MyApp> {
                           foregroundColor: Colors.white,
                         ),
                         onPressed: () {
-                          setState(
-                            () {
-                              buttonName = 'Clicked';
-                            },
-                          );
+                          Navigator.of(context).push(MaterialPageRoute(builder: builder))
                         },
                         child: Text(buttonName),
                       ),
