@@ -34,17 +34,34 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String buttonName = 'Click Me!';
-  int buttonIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('App Title'),
-        ),
-        body: Center(
+      home: MyWidget(),
+    );
+  }
+}
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  String buttonName = 'Click Me!';
+
+  int buttonIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('App Title'),
+      ),
+      body: Center(
           child: buttonIndex == 0
               ? Container(
                   width: double.infinity,
@@ -60,7 +77,13 @@ class _MyAppState extends State<MyApp> {
                           foregroundColor: Colors.white,
                         ),
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: builder))
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return const secondPage();
+                              },
+                            ),
+                          );
                         },
                         child: Text(buttonName),
                       ),
@@ -77,29 +100,39 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                 )
-              : Image.asset('images/bg.jpg')
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              label: 'Home',
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              label: 'Settings',
-              icon: Icon(Icons.settings),
-            )
-          ],
-          currentIndex: buttonIndex,
-          onTap: (value) {
-            setState(
-              () {
-                buttonIndex = value;
-              },
-            );
-          },
-        ),
+              : Image.asset('images/bg.jpg')),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Settings',
+            icon: Icon(Icons.settings),
+          )
+        ],
+        currentIndex: buttonIndex,
+        onTap: (value) {
+          setState(
+            () {
+              buttonIndex = value;
+            },
+          );
+        },
       ),
+    );
+  }
+}
+
+// ignore: camel_case_types
+class secondPage extends StatelessWidget {
+  const secondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
     );
   }
 }
