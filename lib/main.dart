@@ -52,7 +52,7 @@ class MyWidget extends StatefulWidget {
 
 class _MyWidgetState extends State<MyWidget> {
   String buttonName = 'Click Me!';
-
+  bool _isClicked = false;
   int buttonIndex = 0;
 
   @override
@@ -62,45 +62,52 @@ class _MyWidgetState extends State<MyWidget> {
         title: const Text('App Title'),
       ),
       body: Center(
-          child: buttonIndex == 0
-              ? Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  color: const Color.fromARGB(255, 165, 176, 182),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (BuildContext context) {
-                                return const secondPage();
-                              },
-                            ),
-                          );
-                        },
-                        child: Text(buttonName),
+        child: buttonIndex == 0
+            ? Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: const Color.fromARGB(255, 165, 176, 182),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        foregroundColor: Colors.white,
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(
-                            () {
-                              buttonName = 'Clicked';
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return const secondPage();
                             },
-                          );
-                        },
-                        child: Text(buttonName),
-                      )
-                    ],
-                  ),
-                )
-              : Image.asset('images/bg.jpg')),
+                          ),
+                        );
+                      },
+                      child: Text(buttonName),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(
+                          () {
+                            buttonName = 'Clicked';
+                          },
+                        );
+                      },
+                      child: Text(buttonName),
+                    )
+                  ],
+                ),
+              )
+            : GestureDetector(
+              onTap: () => setState(() {
+                _isClicked = !_isClicked;
+              }),
+                child: _isClicked? Image.asset('images/bg.jpg'):
+                Image.network('https://static.toiimg.com/thumb/msid-96286166,width-748,height-499,resizemode=4,imgsize-129000/.jpg')
+              ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
